@@ -4,7 +4,7 @@ html {
 body {
    height: 100%;
    padding: 50px 0 0 0;
-   background-color: #292929;
+   background-color: #202020;
    margin: 0;
 }
 .container {
@@ -18,7 +18,8 @@ body {
    position: absolute;
    margin: 10px;
    margin-left: 0px;
-   color: #7e7e7e;
+   color: #FFF8F0;
+   font-weight: bold;
    box-shadow: 0px 0px 5px #888;
 }
 .container .ss-placeholder-child {
@@ -80,4 +81,43 @@ body {
 .navbar-default .navbar-toggle:hover .icon-bar{
    background-color: #fff;
 }
-.gray {background-color: #3e3e3e;}
+
+.turquoise {background-color: #40E0D0;}
+.darkturquoise {background-color: #00D0D0;}
+.darkorange {background-color: #FF8800;}
+.tomato {background-color: #FF6040;}
+.aqua {background-color: #00FFFF;}
+.coral {background-color: #FF8050;}
+.cornflowerblue {background-color: #6090F0;}
+.darkorchid {background-color: #9030D0;}
+.darksalmon {background-color: #E09870;}
+.darkseagreen {background-color: #90B890;}
+.darkviolet {background-color: #9000D0;}
+.deeppink {background-color: #FF1090;}
+.deepskyblue {background-color: #00C0FF;}
+.dimgray {background-color: #606860;}
+.dodgerblue {background-color: #2090FF;}
+.hotpink {background-color: #FF68B0;}
+.indianred {background-color: #D05860;}
+.lightcoral {background-color: #F08080;}
+.lightpink {background-color: #FFB8C0;}
+.lightsalmon {background-color: #FFA070;}
+.lightseagreen {background-color: #20B0A0;}
+.lightskyblue {background-color: #80D0F0;}
+.lightslategray {background-color: #708890;}
+.limegreen {background-color: #30C830;}
+.magenta {background-color: #FF00FF;}
+.mediumaquamarine {background-color: #60C8A0;}
+.mediumorchid {background-color: #B050D0;}
+.mediumpurple {background-color: #9070D0;}
+.mediumseagreen {background-color: #40B070;}
+.mediumslateblue {background-color: #7068F0;}
+.mediumspringgreen {background-color: #00F890;}
+.mediumturquoise {background-color: #40D0D0;}
+.mediumvioletred {background-color: #C01080;}
+.navy {background-color: #000080;}
+.olive {background-color: #808000;}
+.olivedrab {background-color: #609020;}
+.orange {background-color: #FFA000;}
+.orangered {background-color: #FF4000;}
+
