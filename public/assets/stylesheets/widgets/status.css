@@ -1,0 +1,28 @@
+.status p {
+  top:      36px;
+  left:     28px;
+  bottom:   20px;
+  right:    28px;
+}
+
+.status p.critical {
+  background: #FF4000;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.status p.ok {
+  background: #40FF00;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.status p.warning {
+  background: #FFFF40;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
+}

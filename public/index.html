@@ -11,6 +11,7 @@
    <link href="/assets/vendor/stylesheets/bootstrap.min.css" rel="stylesheet">
    <link rel="stylesheet" type="text/css" href="/assets/vendor/stylesheets/jquery-ui.min.css">
    <link rel="stylesheet" type="text/css" href="/assets/stylesheets/style.css" />
+   <link rel="stylesheet" type="text/css" href="/assets/stylesheets/widgets/status.css" />
    <script src="/assets/vendor/javascripts/jquery-1.11.1.min.js"></script>
    <script src="/assets/vendor/javascripts/jquery-ui-1.10.4.min.js"></script>
    <script src="/assets/vendor/javascripts/jquery.ui.touch-punch.min.js"></script>
@@ -18,6 +19,7 @@
    <script src="/assets/vendor/javascripts/bootstrap.min.js"></script>
    <script src="/assets/vendor/javascripts/smoothie.js"></script>
    <script src="/assets/javascripts/app.js"></script>
+   <script src="/assets/javascripts/widgets/status.js"></script>
    <script type="text/javascript">
          $(document).ready(function () {
             var app = new App();
@@ -35,6 +37,32 @@
    </nav>
    <div class="container">
          <div class="darkorange" data-ss-colspan="3" data-bc-rowspan="3">Spans 3 Rows and 3 Columns<canvas id="lineChart" width="470" height="470" style="width:100%; height: 100%; display: block; position: absolute;"></canvas></div>
+
+         <div data-ss-colspan="1" data-bc-rowspan="1">
+            <div class="widget-container dimgray status">
+               <header>Status Widget</header>
+               <p class="critical"></p>
+               <footer>Last Update: 01:31:18</footer>
+            </div>
+         </div>
+
+         <div data-ss-colspan="2" data-bc-rowspan="2">
+            <div class="widget-container dimgray status">
+               <header>Status Widget</header>
+               <p class="warning"></p>
+               <footer>Last Update: 01:31:18</footer>
+            </div>
+         </div>
+
+         <div data-ss-colspan="3" data-bc-rowspan="3">
+            <div class="widget-container dimgray status">
+               <header>Status Widget</header>
+               <p class="ok"></p>
+               <footer>Last Update: 01:31:18</footer>
+            </div>
+         </div>
+
+
          <div class="tomato" data-ss-colspan="3" data-bc-rowspan="1">Spans 3 Columns</div>
          <div class="cornflowerblue" data-ss-colspan="4" data-bc-rowspan="1">Spans 4 Columns</div>
          <div class="coral" data-ss-colspan="1" data-bc-rowspan="1">Child Element 1</div>
