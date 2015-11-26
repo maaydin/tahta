@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Download Riemann and Oracle JDK
-#curl -o /tmp/cert-forensics-tools-release-el7.rpm https://forensics.cert.org/cert-forensics-tools-release-el7.rpm
-#curl -L -H 'Cookie:oraclelicense=accept-securebackup-cookie' -o /tmp/jdk-8u60-linux-x64.rpm http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm creates=/tmp/jdk-8u60-linux-x64.rpm
-#curl -o /tmp/riemann-0.2.10-1.noarch.rpm https://aphyr.com/riemann/riemann-0.2.10-1.noarch.rpm
+curl -o /tmp/cert-forensics-tools-release-el7.rpm https://forensics.cert.org/cert-forensics-tools-release-el7.rpm
+curl -L -H 'Cookie:oraclelicense=accept-securebackup-cookie' -o /tmp/jdk-8u60-linux-x64.rpm http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm creates=/tmp/jdk-8u60-linux-x64.rpm
+curl -o /tmp/riemann-0.2.10-1.noarch.rpm https://aphyr.com/riemann/riemann-0.2.10-1.noarch.rpm
 
 # Install packages
 sudo rpm -ivh /tmp/cert-forensics-tools-release-el7.rpm
 
-#sudo yum clean metadata
+sudo yum clean metadata
 sudo yum -y install epel-release
 sudo yum -y install mariadb-server
 sudo yum --enablerepo=forensics -y install daemonize

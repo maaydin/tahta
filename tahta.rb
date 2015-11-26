@@ -5,10 +5,10 @@ require 'json'
 
 ActiveRecord::Base.establish_connection(
   :adapter  => "mysql2",
-  :host     => "localhost",
+  :host     => "127.0.0.1",
   :username => "dashboard",
   :password => "dashboard",
-  :database => "dashboard"
+  :database => "dashboard",
 )
 
 class Dashboards < ActiveRecord::Base
@@ -25,10 +25,29 @@ class Tahta < Sinatra::Base
    end
 
    get '/dashboards' do
-      p Dashboards.all
+      data = {}
+      data["dashboards"] = []
+      Dashboards.all.each do |dashboard|
+        dashboards = {}
+        dashboards["id"] = dashboard.DASHBOARD_ID.to_s
+        dashboards["name"] = dashboard.NAME
+        dashboards["title"] = dashboard.TITLE
+        data["dashboards"].push(dashboards)
+      end
+      return data.to_json;
    end
 
    get '/dashboard/:name' do |n|
-      p Widgets.all
+      data = {}
+      data["widgets"] = []
+      Widgets.all.each do |widget|
+        widgets = {}
+        widgets["id"] = widget.WIDGET_ID.to_s
+        widgets["title"] = widget.TITLE
+        widgets["type"] = widget.TYPE
+        widgets["config"] = JSON.parse(widget.CONFIG)
+        data["widgets"].push(widgets)
+      end
+      return data.to_json;
    end
 end
