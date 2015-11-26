@@ -37,10 +37,10 @@ class Tahta < Sinatra::Base
       return data.to_json;
    end
 
-   get '/dashboard/:name' do |n|
+   get '/dashboard/:name' do |name|
       data = {}
       data["widgets"] = []
-      Widgets.all.each do |widget|
+      Widgets.joins('INNER JOIN dashboards ON dashboards.dashboard_id = widgets.dashboard_id').where("dashboards.name = ?", name).each do |widget|
         widgets = {}
         widgets["id"] = widget.WIDGET_ID.to_s
         widgets["title"] = widget.TITLE
