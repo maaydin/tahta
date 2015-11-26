@@ -1,6 +1,21 @@
 # tahta.rb
 require "sinatra/base"
+require 'sinatra/activerecord'
 require 'json'
+
+ActiveRecord::Base.establish_connection(
+  :adapter  => "mysql2",
+  :host     => "localhost",
+  :username => "dashboard",
+  :password => "dashboard",
+  :database => "dashboard"
+)
+
+class Dashboards < ActiveRecord::Base
+end
+
+class Widgets < ActiveRecord::Base
+end
 
 class Tahta < Sinatra::Base
    enable :logging
@@ -9,13 +24,11 @@ class Tahta < Sinatra::Base
       send_file File.join(settings.public_folder, 'index.html')
    end
 
-   get '/dashboard' do
-      content_type :json
-      ""
+   get '/dashboards' do
+      p Dashboards.all
    end
 
    get '/dashboard/:name' do |n|
-      content_type :json
-      ""
+      p Widgets.all
    end
 end
