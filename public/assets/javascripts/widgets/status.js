@@ -1,18 +1,25 @@
 var StatusWidget, root;
 
 StatusWidget = (function() {
-  function StatusWidget(config, widget) {
-    this.header = $('#' + widget.elementid + ' header');
-    this.content = $('#' + widget.elementid + ' p');
-    this.footer = $('#' + widget.elementid + ' footer');
-  }
+   function StatusWidget(widget) {
+      this.header = $('#widget' + widget.id + ' header');
+      this.content = $('#widget' + widget.id + ' p');
+      this.footer = $('#widget' + widget.id + ' footer');
+      var widgetObj = this;
+      
+      var ws = new WebSocket('ws://localhost:5556/index?subscribe=true&query='+ encodeURIComponent(widget.config.query))
+      ws.onmessage = function(event) {
+         event = $.parseJSON(event.data)
+         widgetObj.render(widgetObj, event);
+      };
+   }
 
-  StatusWidget.prototype.render = function(event) {
-    this.content.attr('class', event.state);
-    this.footer.text(event.time);
-  };
+   StatusWidget.prototype.render = function(widget, event) {
+      widget.content.attr('class', event.state);
+      widget.footer.text(event.time);
+   };
 
-  return StatusWidget;
+   return StatusWidget;
 
 })();
 

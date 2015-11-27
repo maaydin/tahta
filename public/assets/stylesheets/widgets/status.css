@@ -3,6 +3,11 @@
   left:     28px;
   bottom:   20px;
   right:    28px;
+  background: #CCCCCC;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
 .status p.critical {
