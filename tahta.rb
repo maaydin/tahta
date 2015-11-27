@@ -24,7 +24,7 @@ class Tahta < Sinatra::Base
       send_file File.join(settings.public_folder, 'index.html')
    end
 
-   get '/dashboards' do
+   get '/api/dashboard' do
       data = {}
       data["dashboards"] = []
       Dashboards.all.each do |dashboard|
@@ -37,7 +37,7 @@ class Tahta < Sinatra::Base
       return data.to_json;
    end
 
-   get '/dashboard/:name' do |name|
+   get '/api/dashboard/:name' do |name|
       data = {}
       data["widgets"] = []
       Widgets.joins('INNER JOIN dashboards ON dashboards.dashboard_id = widgets.dashboard_id').where("dashboards.name = ?", name).each do |widget|
