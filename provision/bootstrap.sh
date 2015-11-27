@@ -9,12 +9,12 @@ curl -o /tmp/riemann-0.2.10-1.noarch.rpm https://aphyr.com/riemann/riemann-0.2.1
 sudo rpm -ivh /tmp/cert-forensics-tools-release-el7.rpm
 
 sudo yum clean metadata
-sudo yum -y install epel-release
-sudo yum -y install mariadb-server
-sudo yum --enablerepo=forensics -y install daemonize
+sudo yum --enablerepo=forensics -y install epel-release mariadb-server ruby ruby-devel zlib-devel daemonize
 
 sudo rpm -ivh /tmp/jdk-8u60-linux-x64.rpm
 sudo rpm -ivh /tmp/riemann-0.2.10-1.noarch.rpm
+
+sudo gem install riemann-tools
 
 # Start services
 sudo systemctl start mariadb
@@ -32,3 +32,7 @@ done
 sudo service firewalld stop
 sudo chkconfig firewalld off
 
+# Run sample health checks
+riemann-health &
+riemann-apache-status &
+riemann-nginx-status &
