@@ -16,7 +16,7 @@ StatusWidget = (function() {
 
    StatusWidget.prototype.render = function(widget, event) {
       widget.content.attr('class', event.state);
-      widget.footer.text(event.time);
+      widget.footer.text('Last update time: ' + event.time.substr(11,8));
    };
 
    return StatusWidget;
