@@ -86,7 +86,7 @@ App = (function() {
       ws.onclose = function() {
          console.error('WebSocket connection closed...');
          widget.disconnected();
-         setInterval(function() { app.bind(widget, query) }, 10000);
+         setTimeout(function() { app.bind(widget, query); }, 10000);
       };
    };
    return App;
