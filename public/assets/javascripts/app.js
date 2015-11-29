@@ -32,7 +32,7 @@ App = (function() {
       grid.html("");
       for (i = 0, len = dashboard.widgets.length; i < len; i++) {
          widget = dashboard.widgets[i];
-         grid.append("<div data-ss-colspan=\"" + widget.config.x + "\" data-bc-rowspan=\"" + widget.config.y + "\"><div id=\"widget" + widget.id + "\" class=\"widget-container dimgray " + widget.type + "\"><header>" + widget.title + "</header><p></p><footer></footer></div></div>");
+         grid.append("<div data-ss-colspan=\"" + widget.colspan + "\" data-bc-rowspan=\"" + widget.rowspan + "\"><div id=\"widget" + widget.id + "\" class=\"widget-container dimgray " + widget.widget_type + "\"><header>" + widget.title + "</header><p></p><footer></footer></div></div>");
          this.render(widget)
       }
       this.grid();
@@ -59,18 +59,17 @@ App = (function() {
    };
 
    App.prototype.render = function(widget) {
-      var query = widget.config.query;
+      var query = widget.instant_data_query;
       if (query === "") {
          query = 'true';
       }
-      var widgetObj = eval('new StatusWidget(widget);');
-      this.bind(widgetObj, query)
+      var widgetObj = eval('new ' + widget.widget_type + '(widget);');
+      this.bind(widgetObj, widget.instant_data_provider_connection_string, query)
    };
 
-
-   App.prototype.bind = function(widget, query) {
+   App.prototype.bind = function(widget, connection_string, query) {
       var app = this;
-      var ws = new WebSocket('ws://localhost:5556/index?subscribe=true&query='+ encodeURIComponent('state != "expired" and ' + query))
+      var ws = new WebSocket(connection_string + encodeURIComponent('state != "expired" and ' + query))
       ws.onopen = function() {
          console.log('WebSocket connection established...');
          widget.connected();
@@ -86,9 +85,10 @@ App = (function() {
       ws.onclose = function() {
          console.error('WebSocket connection closed...');
          widget.disconnected();
-         setTimeout(function() { app.bind(widget, query); }, 10000);
+         setTimeout(function() { app.bind(widget, connection_string, query); }, 10000);
       };
    };
+
    return App;
 
 })();

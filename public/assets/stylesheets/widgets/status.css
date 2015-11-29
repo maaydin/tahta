@@ -1,4 +1,4 @@
-.status p {
+.StatusWidget p {
   top:      36px;
   left:     28px;
   bottom:   20px;
@@ -10,21 +10,21 @@
   margin: 0 auto;
 }
 
-.status p.critical {
+.StatusWidget p.critical {
   background: #FF4000;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
   margin: 0 auto;
 }
-.status p.ok {
+.StatusWidget p.ok {
   background: #40FF00;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
   margin: 0 auto;
 }
-.status p.warning {
+.StatusWidget p.warning {
   background: #FFFF40;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;

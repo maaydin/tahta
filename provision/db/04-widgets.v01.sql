@@ -4,16 +4,23 @@ DROP TABLE IF EXISTS widgets;
 
 CREATE TABLE widgets
 (
-   WIDGET_ID int NOT NULL AUTO_INCREMENT,
-   DASHBOARD_ID int NOT NULL,
-   TITLE varchar(128) NOT NULL,
-   TYPE varchar(16) NOT NULL,
-   CONFIG varchar(2048),
-   PRIMARY KEY (WIDGET_ID)
+   id int NOT NULL AUTO_INCREMENT,
+   dashboard_id int NOT NULL,
+   `index` int NOT NULL,
+   colspan int NOT NULL,
+   rowspan int NOT NULL,
+   title varchar(128) NOT NULL,
+   widget_type varchar(16) NOT NULL,
+   instant_data_provider_id int,
+   instant_data_query varchar(512),
+   persistent_data_provider_id int,
+   persistent_data_query varchar(1024),
+   config varchar(2048),
+   PRIMARY KEY (id)
 );
 
-INSERT INTO widgets VALUES(1, 1, 'CPU', 'status', '{"x": "1", "y": "1", "query" : "service =~ \\"cpu%\\""}');
-INSERT INTO widgets VALUES(2, 1, 'Memory', 'status', '{"x": "2", "y": "2", "query" : "service =~ \\"cpu%\\""}');
-INSERT INTO widgets VALUES(3, 1, 'Load', 'status', '{"x": "3", "y": "3", "query" : "service =~ \\"load%\\""}');
-INSERT INTO widgets VALUES(4, 1, 'Apache Health', 'status', '{"x": "2", "y": "2", "query" : "service =~ \\"httpd health%\\""}');
-INSERT INTO widgets VALUES(5, 1, 'Nginx Health', 'status', '{"x": "1", "y": "1", "query" : "service =~ \\"nginx health%\\""}');
+INSERT INTO widgets VALUES(1, 1, 0, 1, 1, 'CPU', 'StatusWidget', 1, 'service =~ \"cpu%\"', 1, '',  '{}');
+INSERT INTO widgets VALUES(2, 1, 1, 2, 2, 'Memory', 'StatusWidget', 1, 'service =~ \"memory%\"', 1, '',  '{}');
+INSERT INTO widgets VALUES(3, 1, 2, 3, 3, 'Load', 'StatusWidget', 1, 'service =~ \"load%\"', 1, '',  '{}');
+INSERT INTO widgets VALUES(4, 1, 3, 2, 2, 'Apache Health', 'StatusWidget', 1, 'service =~ \"httpd health%\"', 1, '',  '{}');
+INSERT INTO widgets VALUES(5, 1, 4, 1, 1, 'Nginx Health', 'StatusWidget', 1, 'service =~ \"nginx health%\"', 1, '',  '{}');
