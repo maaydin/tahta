@@ -5,14 +5,37 @@ App = (function() {
    }
 
    App.prototype.init = function() {
-      var route = window.location.hash.substr(2);
-      this.route(route);
+      this.router();
    };
 
-   App.prototype.route = function(route) {
-      if(route !== "") {
-         this.dashboard(route);
-         
+   App.prototype.router = function() {
+      var route = window.location.pathname;
+      if (route.indexOf('/dashboard') == 0) {
+         this.dashboard(route.substr(10));
+      } else {
+         this.index();
+      }
+   }
+
+   App.prototype.index = function(name) {
+      $.ajax({
+         type: 'GET',
+         url: '/api/dashboard',
+         dataType: 'json',
+         context: this,
+         success: this.listDashboards
+      });
+   }
+
+   App.prototype.listDashboards = function(dashboards) {
+      var app, dashboard, grid, list;
+      app = this;
+      grid = $('.container');
+      grid.html("");
+      list = grid.append("<ul></ul>");
+      for (i = 0, len = dashboards.dashboards.length; i < len; i++) {
+         dashboard = dashboards.dashboards[i];
+         list.append('<li><a href="/dashboard/' + dashboard.name + '">' + dashboard.title + '</a></li>')
       }
    }
 

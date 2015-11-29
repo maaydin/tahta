@@ -24,6 +24,10 @@ class Tahta < Sinatra::Base
       send_file File.join(settings.public_folder, 'index.html')
    end
 
+   get '/dashboard/:name' do
+      send_file File.join(settings.public_folder, 'index.html')
+   end
+
    get '/api/dashboard' do
       data = {}
       data["dashboards"] = Dashboards.all
