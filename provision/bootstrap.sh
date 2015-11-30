@@ -22,11 +22,12 @@ curl -o /tmp/riemann-0.2.10-1.noarch.rpm https://aphyr.com/riemann/riemann-0.2.1
 sudo rpm -ivh /tmp/cert-forensics-tools-release-el7.rpm
 
 sudo yum clean metadata
-sudo yum --enablerepo=forensics -y install epel-release mariadb-server ruby ruby-devel zlib-devel daemonize
+sudo yum --enablerepo=forensics -y install epel-release mariadb-server mariadb-devel ruby ruby-devel zlib-devel daemonize
 
 sudo rpm -ivh /tmp/jdk-8u60-linux-x64.rpm
 sudo rpm -ivh /tmp/riemann-0.2.10-1.noarch.rpm
 
+# sudo gem install --http-proxy http://10.0.2.2:3128 riemann-tools
 sudo gem install riemann-tools
 
 # Start services
