@@ -1,8 +1,21 @@
 #!/bin/bash
 
+# Behind Proxy Settings
+# Uncomment below lines if you are behind a proxy and change http://10.0.2.2:3128 with your proxy address and port
+#
+# sudo echo "proxy=http://10.0.2.2:3128" >> /etc/yum.conf
+# sudo echo "export http_proxy=http://10.0.2.2:3128" >> /etc/bashrc
+# sudo echo "export https_proxy=http://10.0.2.2:3128" >> /etc/bashrc
+# sudo echo "export HTTP_PROXY=http://10.0.2.2:3128" >> /etc/bashrc
+# sudo echo "export HTTPS_PROXY=http://10.0.2.2:3128" >> /etc/bashrc
+# source /etc/bashrc
+
+# Stop the 
+sudo service firewalld stop
+
 # Download Riemann and Oracle JDK
 curl -o /tmp/cert-forensics-tools-release-el7.rpm https://forensics.cert.org/cert-forensics-tools-release-el7.rpm
-curl -L -H 'Cookie:oraclelicense=accept-securebackup-cookie' -o /tmp/jdk-8u60-linux-x64.rpm http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm creates=/tmp/jdk-8u60-linux-x64.rpm
+curl -L -H 'Cookie:oraclelicense=accept-securebackup-cookie' -o /tmp/jdk-8u60-linux-x64.rpm http://download.oracle.com/otn-pub/java/jdk/8u60-b27/jdk-8u60-linux-x64.rpm
 curl -o /tmp/riemann-0.2.10-1.noarch.rpm https://aphyr.com/riemann/riemann-0.2.10-1.noarch.rpm
 
 # Install packages
@@ -36,3 +49,10 @@ sudo chkconfig firewalld off
 riemann-health &
 riemann-apache-status &
 riemann-nginx-status &
+
+# Run the application
+gem install bundler
+bundle install
+
+# Run the application
+rackup -p 8080 &
